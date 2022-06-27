@@ -8,14 +8,23 @@ class MyExamplesController < ApplicationController
   def random_numbers
     numbers = []
     6.times do
-      numbers << rand(1..60)
+      x = 1
+      while x == 1
+        number = rand(1..60)
+        unless numbers.include?(number)
+          numbers << number
+          x = 0
+        end
+      end
     end
     numbers = numbers.join(" ")
     render html: "Lotto numbers: #{numbers}"
   end
 
   def number_of_visits
-    
+    count = 0
+    count += 1
+    render json: { count: count }
   end
 
   def bottles
